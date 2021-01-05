@@ -19,8 +19,12 @@ script:
   - docker build -t udagram-users-api udagram-users-api
   - docker tag udagram-users-api valikir/udagram-users-api:latest
 
+  - docker build -t udagram-reverse-proxy k8s
+  - docker tag udagram-reverse-proxy valikir/udagram-reverse-proxy:latest
+
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push valikir/udagram-feed-api
   - docker push valikir/udagram-frontend
   - docker push valikir/udagram-users-api
+  - docker push valikir/udagram-reverse-proxy
