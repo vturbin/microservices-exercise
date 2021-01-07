@@ -13,7 +13,7 @@ The application has been divided into three service:
 ## Additional files for deployment required
 As the project is deployed to AWS EKS using kubernetes, it is required to create additional files:
 # aws-secret.yaml
-    ```bash
+
 apiVersion: v1
 kind: Secret
 metadata:
@@ -21,9 +21,10 @@ metadata:
 type: Opaque
 data:
   credentials: __YOUR_AWS_CREDENTIALS_BASE64_ENCODED__
-    ```
+
+ 
 # env-config.yaml
-    ```bash
+
 apiVersion: v1
 kind: ConfigMap
 data:
@@ -36,10 +37,10 @@ data:
   URL: http://a7f0acf21b3744b1b83fcb838907ec7e-1126038356.eu-central-1.elb.amazonaws.com:8100   <---URL OF CREATED LOAD BALANCER
 metadata:
   name: env-config
-    ```
+
 
 # env-secret.yaml
-    ```bash
+
 apiVersion: v1
 kind: Secret
 metadata:
@@ -48,7 +49,7 @@ type: Opaque
 data:
   POSTGRES_USERNAME: __POSTGRES_USERNAME_BASE64_ENCODED___
   POSTGRES_PASSWORD: __POSTGRES_PASSWORD_BASE64_ENCODED___
-    ```
+
 
 ## Deployment using Kubernetes
 The project has also been setup to be deployed on AWS using Kubernetes. All of the required manifests have been created in .k8s directory. The kubernetes deployment is made up of following components:
