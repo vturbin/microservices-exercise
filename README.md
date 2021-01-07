@@ -13,7 +13,7 @@ The application has been divided into three service:
 ## Additional files for deployment required
 As the project is deployed to AWS EKS using kubernetes, it is required to create additional files:
 # aws-secret.yaml
-
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -21,7 +21,7 @@ metadata:
 type: Opaque
 data:
   credentials: __YOUR_AWS_CREDENTIALS_BASE64_ENCODED__
-
+```
  
 # env-config.yaml
 
